@@ -90,7 +90,7 @@ const Formulario = ({ crearCita }) => { //se importa la prop
                     onChange={actualizarState}
                     value={propietario} //esto permite resetear el formulario
                 />
-                <label>Nombre Mascota</label>
+                <label>Fecha</label>
                 <input
                     type="date"
                     name="fecha"
