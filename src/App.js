@@ -6,14 +6,26 @@ function App() {
 
   //Citas en local storage 
 
+  let citasIniciales = JSON.parse(localStorage.getItem('citas')); //JSON.parce convierte el array en string
+  if (!citasIniciales) {
+    citasIniciales = [];
+  }
+
   // Arreglo de las citas
 
-  const [citas, guardarCitas] = useState([]);
+  const [citas, guardarCitas] = useState(citasIniciales);
 
   // useEffect para realizar ciertas operaciones cunado el state cambia
 
   useEffect( ()=>{
-    console.log('documento vacio o algo paso con las citas');
+
+    let citasIniciales = JSON.parse(localStorage.getItem('citas'));
+    if(citasIniciales) {
+      localStorage.setItem('citas', JSON.stringify(citas))
+    } else {
+      localStorage.setItem('citas', JSON.stringify([]));
+    }
+
   }, [citas] ); // se ponene los vacios [] para que no se ejecute ciclicamente, ya que useEffect se ejecuta cuando se modifica algo.
                 // Va a capturar todo lo que se medifique en citas, se llama Array de dependencias.
 
